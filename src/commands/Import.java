@@ -3,10 +3,7 @@ package commands;
 import records.Shard;
 import records.ViewRecord;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +15,11 @@ public class Import {
 
 		if (args.length != 1) {
 			throw new RuntimeException("Usage: Import filepath");
+		}
+
+		File temp = new File(args[0]);
+		if (temp.exists()){
+			System.out.println("exists!");
 		}
 
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(args[0]))) {

@@ -1,6 +1,7 @@
 package tests;
 
 import commands.Import;
+import dependencies.DatastoreModule;
 import records.Shard;
 
 import java.io.File;
@@ -20,13 +21,13 @@ public class ImportTest {
 		String fileName = "testMain";
 		String workingDirectory = System.getProperty("user.dir");
 
-		String filePath = String.format("%s%sinput%s%s.data", workingDirectory,
-										File.separator,
+		String filePath = String.format("%s%s%s.data", DatastoreModule.inputPath(),
 										File.separator,
 										fileName);
 
 		//The Reader reads from a file on the file system, go ahead and create it
 		File testFile = new File(filePath);
+		testFile.getParentFile().mkdirs();
 		testFile.createNewFile();
 
 		try (FileWriter fileWriter = new FileWriter(filePath)) {

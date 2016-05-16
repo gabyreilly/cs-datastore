@@ -23,7 +23,7 @@ public class ShardTest {
 	public void testGetRecords() throws Exception {
 		String shardId = "testGetRecords";
 
-		String filePath = Shard.getFilePath(shardId);
+		String filePath = Shard.getFilePathStatic(shardId);
 
 		//The Reader reads from a file on the file system, go ahead and create it
 		File testFile = new File(filePath);
@@ -46,7 +46,7 @@ public class ShardTest {
 	public void testUpsert() throws Exception {
 		String shardId = "testGetRecords";
 
-		String filePath = Shard.getFilePath(shardId);
+		String filePath = Shard.getFilePathStatic(shardId);
 
 		//The Reader reads from a file on the file system, go ahead and create it
 		File testFile = new File(filePath);
@@ -92,11 +92,12 @@ public class ShardTest {
 	public void testGetFilePath() throws Exception {
 		String shardId = "test";
 
-		String filePath = Shard.getFilePath(shardId);
+		String filePath = Shard.getFilePathStatic(shardId);
 
 		System.out.println("File path " + filePath);
 
 		File file = new File(filePath);
+		file.getParentFile().mkdirs();
 		boolean created = file.createNewFile();
 		System.out.println("Created: " + created);
 	}

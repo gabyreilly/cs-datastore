@@ -1,5 +1,7 @@
 package records;
 
+import dependencies.DatastoreModule;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,12 @@ public class Shard {
 		this.shardId = shardId;
 	}
 
+	public String getFilePath(){
+		return String.format("%s%s%s.data", DatastoreModule.datastorePath(),
+							 File.separator,
+							 shardId);
+	}
+
 	/**
 	 * Read the entire shard into memory
 	 *
@@ -25,10 +33,10 @@ public class Shard {
 	 * @throws IOException
 	 */
 	public List<ViewRecord> getRecords() throws IOException {
-		String filePath = getFilePath(shardId);
+		String filePath = getFilePath();
 
 		List<ViewRecord> records = new ArrayList<>();
-		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))){
+		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
 			String row;
 
 			while ((row = bufferedReader.readLine()) != null) {
@@ -55,9 +63,9 @@ public class Shard {
 	 * @throws IOException
 	 */
 	public void saveRecords(List<ViewRecord> viewRecords) throws IOException {
-		String filePath = getFilePath(shardId);
+		String filePath = getFilePath();
 
-		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))){
+		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
 			for (ViewRecord viewRecord : viewRecords) {
 				bufferedWriter.write(viewRecord.getPersistedRow());
 				bufferedWriter.newLine();
@@ -101,13 +109,13 @@ public class Shard {
 	public void upsertAll(List<ViewRecord> newRecords) throws IOException {
 		List<ViewRecord> existingRecords = this.getRecords();
 		List<String> newIds = newRecords.stream()
-										 .map(ViewRecord::getRowId)
-										 .collect(Collectors.toList());
+										.map(ViewRecord::getRowId)
+										.collect(Collectors.toList());
 
 		//Remove any old record whose ID is in the new upsert list
 		List<ViewRecord> mergedRecords = existingRecords.stream()
-				.filter(r -> !newIds.contains(r.getRowId()))
-				.collect(Collectors.toList());
+														.filter(r -> !newIds.contains(r.getRowId()))
+														.collect(Collectors.toList());
 
 		//Insert the new version of the rows
 		mergedRecords.addAll(newRecords);
@@ -116,15 +124,13 @@ public class Shard {
 		saveRecords(mergedRecords);
 	}
 
-	public static String getFilePath(String shardId) {
+	public static String getFilePathStatic(String shardId) {
 		String workingDirectory = System.getProperty("user.dir");
 
-		return String.format("%s%sdatastore%s%s.data", workingDirectory,
-							 File.separator,
+		return String.format("%s%s%s.data", DatastoreModule.datastorePath(),
 							 File.separator,
 							 shardId);
 	}
-
 
 
 }
