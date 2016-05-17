@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 /**
  * @date May 2016
  *
- * TODO: Please document the purpose of this class
+ * tests the member methods of shards
  */
 public class ShardTest {
 
@@ -88,17 +88,4 @@ public class ShardTest {
 
 	}
 
-	@Test
-	public void testGetFilePath() throws Exception {
-		String shardId = "test";
-
-		String filePath = Shard.getFilePathStatic(shardId);
-
-		System.out.println("File path " + filePath);
-
-		File file = new File(filePath);
-		file.getParentFile().mkdirs();
-		boolean created = file.createNewFile();
-		System.out.println("Created: " + created);
-	}
 }

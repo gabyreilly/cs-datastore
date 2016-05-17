@@ -33,6 +33,37 @@ public class DatastoreModule {
 	}
 
 	/**
+	 * For use in tests, clears the test data store
+	 */
+	public static void clearTestFolder() {
+		File datastore = new File(datastorePath());
+		for(File file : datastore.listFiles()){
+			file.delete();
+		}
+	}
+
+
+	/**
+	 * Get the folder where temp files for map/reduce go
+	 * No trailing slash
+	 *
+	 * @return
+	 */
+	public static String tempPath(String queryId) {
+		String folderName = "temp";
+
+		if (isJUnitTest()) {
+			folderName = "test-temp";
+		}
+		return String.format("%s%s%s%s%s",
+							 System.getProperty("user.dir"),
+							 File.separator,
+							 folderName,
+							 File.separator,
+							 queryId);
+	}
+
+	/**
 	 * Get the folder where input files go
 	 * For the Import command, this will be passed in the param,
 	 * but it is useful to have it available for tests.

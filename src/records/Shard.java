@@ -20,8 +20,19 @@ public class Shard {
 		this.shardId = shardId;
 	}
 
-	public String getFilePath(){
+	public Shard(File file) {
+		String fullName = file.getName();  //includes ".data"
+		shardId = fullName.substring(0, fullName.length() - 5);
+	}
+
+	public String getFilePath() {
 		return String.format("%s%s%s.data", DatastoreModule.datastorePath(),
+							 File.separator,
+							 shardId);
+	}
+
+	public String getTempFilePath(String queryId) {
+		return String.format("%s%s%s.data", DatastoreModule.tempPath(queryId),
 							 File.separator,
 							 shardId);
 	}
@@ -65,12 +76,26 @@ public class Shard {
 	public void saveRecords(List<ViewRecord> viewRecords) throws IOException {
 		String filePath = getFilePath();
 
+		saveRecords(viewRecords, filePath);
+	}
+
+	/**
+	 * Save records to a file (like a temp file), overwriting all previous data
+	 * @param viewRecords
+	 * @param filePath
+	 * @throws IOException
+	 */
+	public void saveRecords(List<ViewRecord> viewRecords, String filePath) throws IOException {
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
 			for (ViewRecord viewRecord : viewRecords) {
 				bufferedWriter.write(viewRecord.getPersistedRow());
 				bufferedWriter.newLine();
 			}
 		}
+	}
+
+	public void saveTempRecords(List<ViewRecord> viewRecords, String queryId) throws IOException {
+
 	}
 
 	/**
@@ -131,6 +156,5 @@ public class Shard {
 							 File.separator,
 							 shardId);
 	}
-
 
 }

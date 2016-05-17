@@ -1,30 +1,28 @@
 package tests;
 
 import commands.Import;
+import commands.Query;
 import dependencies.DatastoreModule;
-import records.Shard;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileWriter;
 
-import static org.junit.Assert.*;
-
 /**
  * @date May 2016
  *
- * Tests the import command
+ * Tests the Query command
  */
-public class ImportTest {
+public class QueryTest {
 
-	@org.junit.Test
-	public void testMain() throws Exception {
-		String fileName = "testMain";
+	@Test
+	public void testQueryMain() throws Exception {
+		//Create the shards
+		String fileName = "testQueryMain";
 
 		String filePath = String.format("%s%s%s.data", DatastoreModule.inputPath(),
 										File.separator,
 										fileName);
-
-
 
 		//The Reader reads from a file on the file system, go ahead and create it
 		File testFile = new File(filePath);
@@ -42,18 +40,16 @@ public class ImportTest {
 		//Clear out the test datatstore
 		DatastoreModule.clearTestFolder();
 
-		//Now call main with that filepath
+		//Now call main with that filepath for the input we created
 		String[] args = new String[]{filePath};
 		Import.main(args);
 
-		//Make assertions based on the assumption that shards are grouped per day
-		Shard april1 = new Shard("2014-04-01");
-		Shard april2 = new Shard("2014-04-02");
-		Shard april3 = new Shard("2014-04-03");
+		//Call Query with the command line args:
+		String[] queryArgs = new String[]{"-s", "TITLE,REV,DATE","-o", "DATE,TITLE"};
+		Query.main(queryArgs);
 
-		assertEquals(1, april1.getRecords().size());
-		assertEquals(2, april2.getRecords().size());
-		assertEquals(1, april3.getRecords().size());
+		//It is difficult to make assertions about System.out, but this will at least check for no
+		// NPEs, and all the components called in that function are unit tested already.
 
 	}
 }

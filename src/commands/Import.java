@@ -17,11 +17,6 @@ public class Import {
 			throw new RuntimeException("Usage: Import filepath");
 		}
 
-		File temp = new File(args[0]);
-		if (temp.exists()){
-			System.out.println("exists!");
-		}
-
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(args[0]))) {
 			//Skip the header row and make sure there was something in it
 			if (bufferedReader.readLine() == null) {
