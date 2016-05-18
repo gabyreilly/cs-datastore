@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bca2948-7746-4b5e-95fc-b80369c6b50a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/commands/Query.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fields/FieldFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/records/MapQuery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/records/QueryParameters.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tests/MapQueryTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tests/QueryParametersTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tests/QueryTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/fields/FieldEnum.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/commands/Import.java" afterPath="$PROJECT_DIR$/src/commands/Import.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dependencies/DatastoreModule.java" afterPath="$PROJECT_DIR$/src/dependencies/DatastoreModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/records/Shard.java" afterPath="$PROJECT_DIR$/src/records/Shard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/ImportTest.java" afterPath="$PROJECT_DIR$/src/tests/ImportTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/ShardTest.java" afterPath="$PROJECT_DIR$/src/tests/ShardTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="cs-datastore.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,15 +27,28 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Import.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Import.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/commands/Import.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.026690392">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="40" column="70" selection-start-line="40" selection-start-column="70" selection-end-line="40" selection-end-column="70" />
+                  <folding />
+                </state>
+              </provider>
+              <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+                <state />
               </provider>
             </entry>
           </file>
@@ -337,6 +338,7 @@
         <option value="$PROJECT_DIR$/src/tests/MapQueryTest.java" />
         <option value="$PROJECT_DIR$/src/tests/QueryTest.java" />
         <option value="$PROJECT_DIR$/src/commands/Import.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1107,7 +1109,7 @@
       <updated>1463279008606</updated>
       <workItem from="1463279010144" duration="15908000" />
       <workItem from="1463448458339" duration="6709000" />
-      <workItem from="1463526414551" duration="2615000" />
+      <workItem from="1463526414551" duration="3374000" />
     </task>
     <servers />
   </component>
@@ -1144,7 +1146,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25232000" />
+    <option name="totallyTimeSpent" value="25991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1872" height="974" extended-state="0" />
@@ -1189,16 +1191,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/commands/Import.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fields/StbField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1840,12 +1832,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/commands/Import.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.026690392">
+        <state vertical-scroll-proportion="0.0">
           <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="70" selection-start-line="40" selection-start-column="70" selection-end-line="40" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
